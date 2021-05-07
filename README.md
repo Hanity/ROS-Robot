@@ -30,6 +30,7 @@ Before experimenting on each of the components needed for building ROS applicati
 #   ROS Nodes
 A ROS node can be considered the basic unit of ROS Packages. It is pretty much just an excecutable file. The node uses a ROS cient library to communicate with other nodes through a publish-subscribe relationship. All nodes of this course are created within the scripts located in the directory `catkin_ws/src/my_robot_tutorial/scripts/`
 
+A simple example about node creation can be found in the script **my_first_node.py**
 #   Publishers/Subcribers
 These are common notions. Basically publishers are codes that send messages under a specified topic. Subscribers are codes that search to receive the messages sent under the topic they seek. So it's basically what we call a giver and receiver.
  ##  Functional Example
@@ -222,6 +223,7 @@ find_package(catkin REQUIRED COMPONENTS
 ```
 - We run catkin_make from the catkin workspace root directory.
 - We create our **action_server.py** script and run it with the command `rosrun my_robot_tutorial action_server.py`
+- Create the script **robot_point_pub.py** that sends the current point information to the **action_server.py** script
 - We create our **action_client.py** script and run it.
 
 # Important Notes
