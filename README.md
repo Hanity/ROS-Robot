@@ -67,7 +67,7 @@ These are files used to launch multiple scripts within a ROS application and als
   - Running the file subscribing to RPM, calculating and publishing the Speed.
 
   The code is called `speed_cal_sim.launch` and can be found in the directory `catkin_ws/src/my_robot_tutorial/Launch/`
-  To execute the code, we use the command `roslaunch my_robot_tutorial rpm_sim.launch`
+  To execute the code, we use the command `roslaunch my_robot_tutorial speed_cal_sim.launch`
   
   **Note:** Don't forget to source the workspace whenever you use a new terminal, using `source catkin_ws/devel/setup.bash`
 
