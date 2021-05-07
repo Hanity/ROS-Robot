@@ -8,16 +8,27 @@ ROS (Robot Operating System) is an open source operating system dedicated to bui
 
 #   ROS Noetic Installation
 For this course, we have used the latest ROS distribution released in May 23rd, 2020 and refered to as ROS Noetic Ninjemys. This distribution is primarly aimed towards
-Ubuntu 20.04. As such it was installed in this OS.
+Ubuntu 20.04. As such it was installed on this OS.
 
-For installation, please follow the steps provided in the following link: http://wiki.ros.org/noetic/Installation/Ubuntu
+For installation, please  follow the steps provided in the following link: http://wiki.ros.org/noetic/Installation/Ubuntu
 
+#   Pre Starting Actions
+
+Before experimenting on each of the components needed for building ROS applications, we did the following:
+
+  ####  Building a workspace
+  We have created a folder called **catkin_ws** which represents our workspace. Within this folder we manually created the **src** folder then we used the command 
+  `catkin_make`. This created the **build** and **devel** directories.
+
+  **Note**
+  Each time a new terminal is opened, we have to source our workspace using the command `source devel/setup.bash`
 #   ROS Nodes
+A ROS node can be considered the basic unit of ROS Packages. It is pretty much just an excecutable file. The node uses a ROS cient library to communicate with other nodes through a publish-subscribe relationship. All nodes of this course are created within the scripts located in the directory `catkin_ws/src/my_robot_tutorial/scripts/`
 
 #   Publishers/Subcribers
-
+These are common notions. Basically publishers are codes that send messages under a specified topic. Subscribers are codes that search to receive the messages sent under the topic they seek. So it's basically what we call a giver and receiver.
   ##  Functional Example
-
+In the location `catkin_ws/src/my_robot_tutorial/scripts/` we find the python script `publisher.py` that
   ##  Mini-Project Example
 
 #   ROS Parameter Server
