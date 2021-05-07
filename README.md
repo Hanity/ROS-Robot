@@ -155,7 +155,6 @@ add_service_files(
    sensor_msgs
    std_msgs
    geometry_msgs
-   actionlib_msgs
  )
 ```
 - Third, we run catkin_make from the catkin workspace root directory.
@@ -164,8 +163,67 @@ add_service_files(
 
 #   ROS Actions
 Actions are basically an extensions of Services. While Services are handy in many cases in ROS applications, there are however cases when we have application that takes long for the execution. In which case, the client usually would want to receive period feedback from the service or have the ability to stop the execution. This is done by actionlib package where we have an Action Server and an Action Client. Three parameters are defined: Goal, Feedback and Result.
+
 For further reading, please see http://wiki.ros.org/actionlib/.
 
 The next project will showcase the usage of actions
   ##  Project Example
+The description of the project is found in the pdf named **ROS ACTIONS PROJECT BRIEF**
+To create this project, we follow the next steps:
+- Create a folder named **action** within our **my_robot_tutorial** folder.
+- Inside this new folder, we create the file **navigate2D.action** that contains the definition of our 3 parameters:
+```
+#Goal
+geometry_msgs/Point point
+---
+#Result
+float32 elapsed_time
+---
+#feedback
+float32 distance_to_point
 
+```
+- We add the following dependencies in the **package.xml** file:
+```
+<build_depend>actionlib</build_depend>
+<build_depend>actionlib_msgs</build_depend>
+<exec_depend>actionlib</exec_depend>
+<exec_depend>actionlib_msgs</exec_depend>
+```
+- We edit the **CMakeLists.txt** file as follows:
+```
+find_package(catkin REQUIRED COMPONENTS
+  roscpp
+  rospy
+  std_msgs
+  message_generation
+  sensor_msgs
+  geometry_msgs
+  genmsg
+  actionlib
+  actionlib_msgs
+)
+
+## Generate actions in the 'action' folder
+  add_action_files(
+  FILES
+  navigate2D.action
+    )
+
+## Generate added messages and services with any dependencies listed here
+ generate_messages(
+   DEPENDENCIES
+   sensor_msgs
+   std_msgs
+   geometry_msgs
+   actionlib_msgs
+ )
+
+```
+- We run catkin_make from the catkin workspace root directory.
+- We create our **action_server.py** script and run it with the command `rosrun my_robot_tutorial action_server.py`
+- We create our **action_client.py** script and run it.
+
+# Important Notes
+- Make sure that all python files in the scripts folder are executable using the command `chmod +x *.py`
+- Whenever using a new terminal, make sure to source using the command `source devel/setup.bash`
