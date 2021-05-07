@@ -20,6 +20,8 @@ Before experimenting on each of the components needed for building ROS applicati
   We have created a folder called **catkin_ws** which represents our workspace. Within this folder we manually created the **src** folder then we used the command 
   `catkin_make`. This created the **build** and **devel** directories.
 
+  #### Launching roscore
+  This is the first thing to be done everytime we use ROS. This command launches the ROS Master which is the central node for all other ROS nodes that communicate to build a full ROS-based system. Only one instance of this can be called.
   **Note**
   Each time a new terminal is opened, we have to source our workspace using the command `source devel/setup.bash`
 #   ROS Nodes
@@ -28,7 +30,12 @@ A ROS node can be considered the basic unit of ROS Packages. It is pretty much j
 #   Publishers/Subcribers
 These are common notions. Basically publishers are codes that send messages under a specified topic. Subscribers are codes that search to receive the messages sent under the topic they seek. So it's basically what we call a giver and receiver.
   ##  Functional Example
-In the location `catkin_ws/src/my_robot_tutorial/scripts/` we find the python script `publisher.py` that
+In the location `catkin_ws/src/my_robot_tutorial/scripts/` we find the python script `publisher.py` that contains the code to publish the string “Hello World” under the topic hello_world. Our Subscriber script is in the same folder under the name `subscriber.py`. This last subscribes to the topic hello_world in order to receive all messages directed to this topic.
+Now for the execution, it goes as follows:
+- Launching the ROS master with the command `roscore`
+- In a separate terminal, we run the publisher script using `python3 publisher.py`.
+- We confirm that our publisher is working well by using the command `rostopic list`. This displays the topics being published. If we want to see the contents of the messages sent, we use the command `rostopic echo /hello_world`.
+- In a separate terminal again, we run the subscriber script using `python3 subscriber.py`. A print was added to the code to make sure the messages were received correctly.
   ##  Mini-Project Example
 
 #   ROS Parameter Server
