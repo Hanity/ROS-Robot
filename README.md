@@ -88,7 +88,11 @@ This is pretty simple too.
 #   ROS Services
 ROS Services are used to achieve the request-reply (client-server) interaction. So the service received a request from a client, then does the necessary computations and eventually gives a response to the client. Unlike ROS packages, the services are scarce, which means developpers have to create their own services.
 The next two examples will be used to demonstrate the creation and usage of services. 
-- We create the service file named  **OddEvenCheck.srv** and specify the type of input msg to receive from clients and the type of output msg to answer said clients. This is done as follows:
+
+  ##  Functional Example: Odd Even Service
+ The purpose is to create a simple service that tells the client if the number he sent is odd or even.
+  
+  - We create the service file named  **OddEvenCheck.srv** and specify the type of input msg to receive from clients and the type of output msg to answer said clients. This is done as follows:
 ```
 int32 number
 
@@ -117,12 +121,13 @@ add_service_files(
  )
  ```
  - We create the service script called **odd_even_service.py**.
- - We create the client script called **odd_even_client.py**
+ - Now we can use our created service through a terminal by using the command `rosservice call \OddEvenCheck input` and we will receive an answer.
+ - We can also create the client script called **odd_even_client.py** that calls our service and may use it for further things.
+ 
+ **Note**
+ As mentioned before, all these files are in the **scripts** folder.
 
 
-
-  ##  Functional Example: Odd Even Service
-  The purpose is to create a simple service that tells the client if the number he sent is odd or even.
   ##  Project Example: Image Retrieval
 
 
