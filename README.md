@@ -16,14 +16,14 @@ For installation, please  follow the steps provided in the following link: http:
 
 Before experimenting on each of the components needed for building ROS applications, we did the following:
 
-  ####  Building a workspace
+  ###  Building a workspace
   We have created a folder called **catkin_ws** which represents our workspace. Within this folder we manually created the **src** folder then we used the command 
   `catkin_make`. This created the **build** and **devel** directories.
   
-  #### Creating the my_robot_turial package
+  ### Creating the my_robot_turial package
   This was done inside the folder **catkin_ws/src/** using the command `catkin_create_pkg my_robot_tutorial roscpp rospy std_msgs`
 
-  #### Launching roscore
+  ### Launching roscore
   This is the first thing to be done everytime we use ROS. This command launches the ROS Master which is the central node for all other ROS nodes that communicate to build a full ROS-based system. Only one instance of this can be called.
   **Note**
   Each time a new terminal is opened, we have to source our workspace using the command `source devel/setup.bash`
