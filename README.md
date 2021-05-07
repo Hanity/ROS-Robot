@@ -37,7 +37,9 @@ Now for the execution, it goes as follows:
 - We confirm that our publisher is working well by using the command `rostopic list`. This displays the topics being published. If we want to see the contents of the messages sent, we use the command `rostopic echo /hello_world`.
 - In a separate terminal again, we run the subscriber script using `python3 subscriber.py`. A print was added to the code to make sure the messages were received correctly.
   ##  Mini-Project Example
-
+**Summary**: 
+The task is creating 2 nodes, the first publishes a value (rpm), and the second subscribes to the value of rpm and publishes the calculated speed.
+The detailed description of this mini project can be found in the pdf named `ROS - Pub-Sub-Mini-Project`
 #   ROS Parameter Server
 
 #   ROS Launch Files
