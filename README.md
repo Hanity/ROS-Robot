@@ -29,15 +29,15 @@ A ROS node can be considered the basic unit of ROS Packages. It is pretty much j
 
 #   Publishers/Subcribers
 These are common notions. Basically publishers are codes that send messages under a specified topic. Subscribers are codes that search to receive the messages sent under the topic they seek. So it's basically what we call a giver and receiver.
-  ##  Functional Example
+ ##  Functional Example
 In the location `catkin_ws/src/my_robot_tutorial/scripts/` we find the python script `publisher.py` that contains the code to publish the string “Hello World” under the topic hello_world. Our Subscriber script is in the same folder under the name `subscriber.py`. This last subscribes to the topic hello_world in order to receive all messages directed to this topic.
 Now for the execution, it goes as follows:
 - Launching the ROS master with the command `roscore`
 - In a separate terminal, we run the publisher script using `python3 publisher.py`.
 - We confirm that our publisher is working well by using the command `rostopic list`. This displays the topics being published. If we want to see the contents of the messages sent, we use the command `rostopic echo /hello_world`.
 - In a separate terminal again, we run the subscriber script using `python3 subscriber.py`. A print was added to the code to make sure the messages were received correctly.
-  ##  Mini-Project Example
-    ######  Summary
+ ##  Mini-Project Example
+######  Summary
 The task is creating 2 nodes, the first publishes a value (rpm), and the second subscribes to the value of rpm and publishes the calculated speed.
 The detailed description of this mini project can be found in the pdf named `ROS - Pub-Sub-Mini-Project`
 
@@ -48,15 +48,29 @@ The detailed description of this mini project can be found in the pdf named `ROS
 This is basically a centralized space to store variables that are frequently used and usually related to physical attributes of robots.
 Since these values change overtime, it is more convenient to have them stored in such a server and called by the scripts whenever needed.
 
-- **To change** the variable within the parameter server, we use for example the command `rosparam set /wheel_radius 0.155`.
+- **To change** a variable within the parameter server, we use for example the command `rosparam set /wheel_radius 0.155`.
 - **To display** a variable within a terminal, we use `rosparam get /wheel_radius`.
 - **To call** a variable within our scripts, we use `rospy.get_param('/wheel_size')`.
 
 #   ROS Launch Files
+These are files used to launch multiple scripts within a ROS application and also to set variable values in the parameter server. This largely simplfies the execution of our codes as it's done in one go instead of the tedious work of manually launching each file in a different terminal.
 
   ##  Mini-Project Example
+  In this mini-project, we aim to create a launch file that will execute all the steps required in the previous Pub-Sub mini-project. It will do the following: 
+  - Starting the ROS Master.
+  - Setting the wheel_radius parameter in the ROS parameter server.
+  - Running the RPM publisher.
+  - Running the file subscribing to RPM, calculating and publishing the Speed.
+
+  The code is called `speed_cal_sim.launch` and can be found in the directory `catkin_ws/src/my_robot_tutorial/Launch/`
+  To execute the code, we use the command `roslaunch my_robot_tutorial rpm_sim.launch`
+  
+  **Note:** Don't forget to source the workspace whenever you use a new terminal, using `source catkin_ws/devel/setup.bash`
 
 #   ROS Bag Files
+A ROS Bag is basically a tool used to record messages sent under a certain topic, and playing them again whenever requested.
+- A Bag file can be launched using the command `rosbag record -a -O test.bag`
+- The recorded file can be played in a loop (-l) using the command `rosbag play -l test.bag`
 
 #   ROS Packages
 
