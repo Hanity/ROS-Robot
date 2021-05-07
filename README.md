@@ -77,16 +77,16 @@ A ROS Bag is basically a tool used to record messages sent under a certain topic
 
 #   ROS Packages
 Packages are organized sotfware in ROS. They allow us to break up our robot application into reusable blocks such that the update and debugging of said application are simplified. 
-###### Creating packages
+### Creating packages
 Creating a package in ROS is simple and is done using the command `catkin_create_pkg package_name dependencies`
-###### Installing and using packages
+### Installing and using packages
 This is pretty simple too.
 - First, you can follow https://index.ros.org/packages/page/1/time/ and find the suitable package(s) to create your desired application.
 - To install a package, use the command `sudo apt install ros-noetic-package_name`
 - To use a package, use the command `rosrun package_name file_to_execute`. Note that in most cases the files to execute would be launch files. Also, to achieve your desired result you logically have to run your packages files in the right succession.
 
 #   ROS Services
-
+ROS Services are used to achieve the request-reply (client-server) interaction. So the service received a request from a client, then does the necessary computations and eventually gives a response to the client. Unlike ROS packages, the services are scarce, which means developpers have to create their own services.
   ##  Functional Example: Odd Even Service
   ##  Project Example: Image Retrieval
 
