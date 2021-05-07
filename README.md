@@ -120,16 +120,47 @@ add_service_files(
    std_msgs
  )
  ```
+ - We run catkin_make from the catkin workspace root directory.
  - We create the service script called **odd_even_service.py**.
  - Now we can use our created service through a terminal by using the command `rosservice call \OddEvenCheck input` and we will receive an answer.
  - We can also create the client script called **odd_even_client.py** that calls our service and may use it for further things.
  
- **Note**
- As mentioned before, all these files are in the **scripts** folder.
+ **Note:**
+ As mentioned before, all these files are available in the **scripts** folder.
 
 
   ##  Project Example: Image Retrieval
+This is a bit more advanced example showing the usage of services. The purpose is a service that receives a desired camera angle from the client. It then turns to the camera to this angle, takes a picture and sends the image back to the client. 
+For the sake of simplicity, a folder containing images in angles -30°, -15°, 0°, 15° and 30° is provided. So the service received the desired angle and returns the appropriate image from this folder.
+For further details, please consult the pdf named **ROS-Services-Project-Brief**.
+The steps are similar to the previous example.
+- First, in the **srv** folder, we create the service file **TurnCamera.srv** containing the following:
+```
+float32 turn_degrees
+---
+sensor_msgs/Image image
+```
+- Second, we edit the **CMakeLists.txt** file as follows:
+```
+## Generate services in the 'srv' folder
+add_service_files(
+    FILES
+    OddEvenCheck.srv
+    TurnCamera.srv
+ )
 
+## Generate added messages and services with any dependencies listed here
+ generate_messages(
+   DEPENDENCIES
+   sensor_msgs
+   std_msgs
+   geometry_msgs
+   actionlib_msgs
+ )
+```
+- Third, we run catkin_make from the catkin workspace root directory.
+- Next, we create our service script called **turn_camera_service.py**.
+- Lastly, we create our client script called **turn_camera_client.py**
 
 #   ROS Actions
 
