@@ -163,6 +163,9 @@ add_service_files(
 - Lastly, we create our client script called **turn_camera_client.py**
 
 #   ROS Actions
+Actions are basically an extensions of Services. While Services are handy in many cases in ROS applications, there are however cases when we have application that takes long for the execution. In which case, the client usually would want to receive period feedback from the service or have the ability to stop the execution. This is done by actionlib package where we have an Action Server and an Action Client. Three parameters are defined: Goal, Feedback and Result.
+For further reading, please see http://wiki.ros.org/actionlib/.
 
+The next project will showcase the usage of actions
   ##  Project Example
 
