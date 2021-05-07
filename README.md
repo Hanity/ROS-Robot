@@ -37,10 +37,20 @@ Now for the execution, it goes as follows:
 - We confirm that our publisher is working well by using the command `rostopic list`. This displays the topics being published. If we want to see the contents of the messages sent, we use the command `rostopic echo /hello_world`.
 - In a separate terminal again, we run the subscriber script using `python3 subscriber.py`. A print was added to the code to make sure the messages were received correctly.
   ##  Mini-Project Example
-**Summary**: 
+    ######  Summary
 The task is creating 2 nodes, the first publishes a value (rpm), and the second subscribes to the value of rpm and publishes the calculated speed.
 The detailed description of this mini project can be found in the pdf named `ROS - Pub-Sub-Mini-Project`
+
+   ######  Codes
+   The codes for this project are within the files **task1-pub.py** and **task1-sub-pub.py**.
+   
 #   ROS Parameter Server
+This is basically a centralized space to store variables that are frequently used and usually related to physical attributes of robots.
+Since these values change overtime, it is more convenient to have them stored in such a server and called by the scripts whenever needed.
+
+- **To change** the variable within the parameter server, we use for example the command `rosparam set /wheel_radius 0.155`.
+- **To display** a variable within a terminal, we use `rosparam get /wheel_radius`.
+- **To call** a variable within our scripts, we use `rospy.get_param('/wheel_size')`.
 
 #   ROS Launch Files
 
