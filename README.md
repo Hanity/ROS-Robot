@@ -19,6 +19,9 @@ Before experimenting on each of the components needed for building ROS applicati
   ####  Building a workspace
   We have created a folder called **catkin_ws** which represents our workspace. Within this folder we manually created the **src** folder then we used the command 
   `catkin_make`. This created the **build** and **devel** directories.
+  
+  #### Creating the my_robot_turial package
+  This was done inside the folder **catkin_ws/src/** using the command `catkin_create_pkg my_robot_tutorial roscpp rospy std_msgs`
 
   #### Launching roscore
   This is the first thing to be done everytime we use ROS. This command launches the ROS Master which is the central node for all other ROS nodes that communicate to build a full ROS-based system. Only one instance of this can be called.
@@ -73,6 +76,14 @@ A ROS Bag is basically a tool used to record messages sent under a certain topic
 - The recorded file can be played in a loop (-l) using the command `rosbag play -l test.bag`
 
 #   ROS Packages
+Packages are organized sotfware in ROS. They allow us to break up our robot application into reusable blocks such that the update and debugging of said application are simplified. 
+###### Creating packages
+Creating a package in ROS is simple and is done using the command `catkin_create_pkg package_name dependencies`
+###### Installing and using packages
+This is pretty simple too.
+- First, you can follow https://index.ros.org/packages/page/1/time/ and find the suitable package(s) to create your desired application.
+- To install a package, use the command `sudo apt install ros-noetic-package_name`
+- To use a package, use the command `rosrun package_name file_to_execute`. Note that in most cases the files to execute would be launch files. Also, to achieve your desired result you logically have to run your packages files in the right succession.
 
 #   ROS Services
 
